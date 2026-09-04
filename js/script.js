@@ -1,41 +1,25 @@
-const numeroWhatsApp = "5521999999999";
+const botoesPedido = document.querySelectorAll(
+    ".btn-whatsapp-produto, .btn-whatsapp-geral"
+);
 
-const botoesProduto = document.querySelectorAll(".btn-whatsapp-produto");
+const modalDemo = document.querySelector("#modal-demo");
+const botaoFecharModal = document.querySelector(".modal-demo-fechar");
+const botaoEntendi = document.querySelector(".modal-demo-entendi");
 
-botoesProduto.forEach(function(botao) {
-
+botoesPedido.forEach(function(botao) {
     botao.addEventListener("click", function(evento) {
-
         evento.preventDefault();
 
-        const produto = botao.dataset.produto;
-
-        const mensagem = `Olá! Gostaria de pedir ${produto}.`;
-
-        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-        window.open(url, "_blank");
-
+        modalDemo.classList.add("ativo");
     });
-
 });
 
-const botoesWhatsAppGeral = document.querySelectorAll(".btn-whatsapp-geral");
+botaoFecharModal.addEventListener("click", function() {
+    modalDemo.classList.remove("ativo");
+});
 
-botoesWhatsAppGeral.forEach(function(botao) {
-
-    botao.addEventListener("click", function(evento) {
-
-        evento.preventDefault();
-
-        const mensagem = "Olá! Gostaria de fazer um pedido na Massa & Brasa.";
-
-        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-        window.open(url, "_blank");
-
-    });
-
+botaoEntendi.addEventListener("click", function() {
+    modalDemo.classList.remove("ativo");
 });
 
 const menuToggle = document.querySelector(".menu-toggle");
